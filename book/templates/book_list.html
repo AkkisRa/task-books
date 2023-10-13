@@ -1,21 +1,36 @@
+{% include 'header.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Book List</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
+<body class="container mt-4">
     <h1>Book List</h1>
-    <ul>
+    <ul class="list-unstyled">
         {% for book in books %}
-            <li>
-                <h2>{{ book.title }}</h2>
-                <p>{{ book.description }}</p>
-                  <img src="{{ book.image.url}}" alt="" width="900" height="504">
-                <p>Cost: ${{ book.cost }}</p>
-                <p>Created Date: {{ book.created_date }}</p>
+            <li class="media my-4">
+                <img src="{{ book.image.url }}" alt="{{ book.title }}" class="mr-3" width="290" height="400">
+                <div class="media-body">
+                    <h2 class="mt-0">{{ book.title }}</h2>
+                    <p>{{ book.description }}</p>
+                    <a href="{% url 'book_detail' book_id=book.id %}" class="btn btn-info">
+                        More
+                    </a>
+                    <p class="mt-2">Cost: ${{ book.cost }}</p>
+                    <p>Created Date: {{ book.created_date }}</p>
+                </div>
             </li>
         {% endfor %}
     </ul>
+
+    <!-- Add Bootstrap JS and Popper.js scripts (if needed) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+{% include 'footer.html' %}

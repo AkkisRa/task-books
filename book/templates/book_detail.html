@@ -1,0 +1,31 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }} Details</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h1>{{ book.title }} Details</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <p>Description: {{ book.description }}</p>
+            <p>Cost: ${{ book.cost }}</p>
+            <p>Created Date: {{ book.created_date }}</p>
+            <a href="{% url 'book_list' %}" class="btn btn-info">Back to Book List</a>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts (if needed) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% include 'footer.html' %}
+
