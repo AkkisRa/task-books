@@ -1,0 +1,10 @@
+{% include 'header.html' %}
+
+{% block content %}
+    <h2>Edit Book</h2>
+    <form method="post" action="{% url 'edit_book' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Edit Book</button>
+    </form>
+{% endblock %}

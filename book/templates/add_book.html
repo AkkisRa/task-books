@@ -1,0 +1,10 @@
+{% include 'header.html' %}
+
+{% block content %}
+    <h2>Add Book</h2>
+    <form method="post" action="{% url 'add_book' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Book</button>
+    </form>
+{% endblock %}
