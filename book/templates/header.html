@@ -3,14 +3,16 @@
         <h5 class="my-0 mr-md-auto font-weight-normal">BookShop</h5>
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-dark" href="#">Home</a>
-            <a class="p-2 text-dark" href="#">Books of the Month</a>
-            <a class="p-2 text-dark" href="#">Highlights</a>
-            <a class="p-2 text-dark" href="#">New Releases</a>
+            <a class="p-2 text-dark" href="{% url 'add_comment_view'%}">Add review</a>
             <a class="p-2 text-dark" href="{% url 'add_book' %}">Add Book</a>
             <a class="p-2 text-dark" href="{% url 'delete_book' %}">Delete Book</a>
             <a class="p-2 text-dark" href="{% url 'edit_book' %}">Edit Book</a>
+            <form class="d-flex" role="search" action="{% url 'programm_lang_search' %}" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" name="q">
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
+            </form>
         </nav>
-        <a class="btn btn-outline-info" href="#">Sign up</a>
+
     </div>
 
     <!-- Bootstrap CSS -->

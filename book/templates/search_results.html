@@ -1,0 +1,16 @@
+<!-- search_results.html -->
+{% extends 'header.html' %}
+{% block content %}
+    {% if results %}
+        <h2>Результаты поиска для "{{ query }}"</h2>
+        <ul>
+            {% for book in results %}
+                <li>{{ book.title }} - {{ book.author }} - {{ book.published_date }}</li>
+                <!-- Дополнительная отладочная информация -->
+                <li>Debug: {{ book }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>По вашему запросу ничего не найдено.</p>
+    {% endif %}
+{% endblock %}

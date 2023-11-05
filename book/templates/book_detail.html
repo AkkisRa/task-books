@@ -18,8 +18,23 @@
             <p>Cost: ${{ book.cost }}</p>
             <p>Created Date: {{ book.created_date }}</p>
             <a href="{% url 'book_list' %}" class="btn btn-info">Back to Book List</a>
+
+            <div>
+                <table border="2">
+                    <tr>
+                        <th>Дата создания отзыва</th> <th>Коммент</th> <th>Оценка</th>
+                    </tr>
+
+                    {% for i in lang_key.review_object.all %}
+                    <tr>
+                        <td>{{i.created_at}}</td> <td>{{i.text_review}}</td> <td>{{i.rate_stars}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
+
 
     <!-- Add Bootstrap JS and Popper.js scripts (if needed) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -27,5 +42,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 {% include 'footer.html' %}
 

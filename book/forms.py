@@ -1,4 +1,6 @@
 from django import forms
+
+from . import models
 from .models import Book
 
 class AddBookForm(forms.Form):
@@ -36,3 +38,19 @@ class EditBookForm(forms.Form):
             choices=[(book.id, book.title) for book in Book.objects.all()],
             label='Выберите книгу для редактирования'
         )
+
+
+class ReviewForm(forms.ModelForm):
+    title_lang = forms.ModelChoiceField(
+        queryset=Book.objects.all(),
+        label='Book',
+    )
+
+    class Meta:
+        model = models.ReviewProgLang
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ReviewForm, self).__init__(*args, **kwargs)
+        self.fields['title_lang'].queryset = Book.objects.all()
+        self.fields['title_lang'].widget.attrs.update({'class': 'form-control'})

@@ -1,4 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views import generic
+
+from . import forms, models
 from .forms import AddBookForm, DeleteBookForm, EditBookForm
 from .models import Book
 
@@ -74,3 +78,29 @@ def edit_book(request):
         form = EditBookForm()
 
     return render(request, 'edit_book.html', {'form': form})
+def add_comment_view(request):
+    method = request.method
+    if method == 'POST':
+        form = forms.ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('<h1>Коммент успешно добавлен</h1>')
+
+    else:
+        form = forms.ReviewForm()
+
+    return render(request, 'add_comment.html', {'form': form})
+
+from .models import Book
+
+def programm_lang_search(request):
+    query = request.GET.get('q')
+
+    if query:
+        results = Book.objects.filter(title__icontains=query)
+    else:
+        results = Book.objects.all()
+
+    print(f"Query: {query}, Results: {results}")
+
+    return render(request, 'search_results.html', {'results': results, 'query': query})
