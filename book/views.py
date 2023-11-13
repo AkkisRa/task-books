@@ -1,10 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views import generic
-
-from . import forms, models
-from .forms import AddBookForm, DeleteBookForm, EditBookForm
 from .models import Book
+from . import forms
+from .forms import AddBookForm, DeleteBookForm, EditBookForm
 
 def book_list(request):
     books = Book.objects.all()
@@ -91,7 +89,6 @@ def add_comment_view(request):
 
     return render(request, 'add_comment.html', {'form': form})
 
-from .models import Book
 
 def programm_lang_search(request):
     query = request.GET.get('q')

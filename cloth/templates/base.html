@@ -1,0 +1,35 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Cloth Store{% endblock %}</title>
+</head>
+<body>
+
+    <header>
+        <h1>My Cloth Store</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'product-list' %}">Product List</a></li>
+                <li><a href="{% url 'order-create' %}">Create Order</a></li>
+                <li><a href="{% url 'tag1-list' %}">Tag 1 Products</a></li>
+                <li><a href="{% url 'tag2-list' %}">Tag 2 Products</a></li>
+                <li><a href="{% url 'tag3-list' %}">Tag 3 Products</a></li>
+                <li><a href="{% url 'tag4-list' %}">Tag 4 Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Cloth Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!-- templates/product_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Product List</h2>
+  <ul>
+    {% for product in object_list %}
+      <li>{{ product.name }} - {{ product.description }} - {{ product.price }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
